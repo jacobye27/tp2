@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<!-- -HEAD ----------------------------------------------------------------- -->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IFT-3000-Graphe de dépendances</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="resources/css/style.css" type="text/css">
+  <link rel="shortcut icon" href="#">
+</head>
+
+<!-- -BODY ----------------------------------------------------------------- -->
+
+<body class="initial-hide" onload="reset()">
+
+  <!-- -page d'affichage de la banque des cours ---------------------------- -->
+  <div class="w-100 offcanvas offcanvas-start" tabindex="-1" id="offcanvasCours"
+    aria-labelledby="offcanvasCoursLabel">
+    <div class="offcanvas-header">
+      <h1 class="offcanvas-title" id="offcanvasCoursLabel">Banque de cours</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+        aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body" id="courscontents">
+      <!-- -là où le contenu de bcours.html sera inséré -------------------- -->
+    </div>
+  </div>
+  <!-- -page d'affichage des programmes ------------------------------------ -->
+  <div class="w-100 offcanvas offcanvas-end" tabindex="-1" id="offcanvasPgm"
+    aria-labelledby="offcanvasPgmLabel">
+    <div class="offcanvas-header">
+      <h1 class="offcanvas-title" id="offcanvasPgmLabel">Programmes</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+        aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body" id="pgmcontents">
+      <!-- -là où le contenu de pgms.html sera inséré ---------------------- -->
+    </div>
+  </div>
+  <!-- -page d'aide -------------------------------------------------------- -->
+  <div class="w-100 offcanvas offcanvas-start" tabindex="-1" id="offcanvasInfo"
+    aria-labelledby="offcanvasInfoLabel">
+    <div class="offcanvas-header">
+      <h1 class="offcanvas-title" id="offcanvasInfoLabel">Information</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+        aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body" id="infocontents">
+      <!-- -là où le contenu de bcours.html sera inséré -------------------- -->
+    </div>
+  </div>
+
+  <!-- -Barre de tête------------------------------------------------------- -->
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+        <button class="accordion-button collapsed" type="button"
+          data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+          aria-expanded="false" aria-controls="flush-collapseOne">
+          <img src="resources/img/icone.png" alt="Logo" width="30" height="24"
+            class="d-inline-block align-text-top">
+          Graphe de dépendances de cours
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse"
+        aria-labelledby="flush-headingOne"
+        data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body" id="introcontents">
+          <!-- -là où le contenu de intro.html sera inséré ----------------- -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="b-example-divider"></div>
+    <div class="row">
+      <!-- -choix de cours ------------------------------------------------- -->
+      <div class="col">
+        <span data-bs-toggle="offcanvas" href="#offcanvasCours"
+          class="badge bg-dark-subtle border border-dark-subtle text-dark-emphasis rounded-pill"><b>?</b></span>
+        <label for="formGroupExampleInput" class="form-label">
+          <b>Cours</b>
+        </label>
+        <div class="mb-3">
+          <div class="input-group mb-3">
+            <select class="form-select" aria-label="Default select example"
+              id="select_nc" onchange="generer_graphe()">
+              <!-- -là où le contenu de lnc.html sera inséré --------------- -->
+            </select>
+            <button type="button" class="btn btn-primary btn-sm" id="ok"
+              onclick="resetCours()"><i
+                class="material-icons">restart_alt</i></button>
+          </div>
+        </div>
+      </div>
+      <!-- -choix de programme --------------------------------------------- -->
+      <div class="col">
+        <span data-bs-toggle="offcanvas" href="#offcanvasPgm"
+          class="badge bg-dark-subtle border border-dark-subtle text-dark-emphasis rounded-pill"><b>?</b></span>
+        <label for="formGroupExampleInput2" class="form-label"><b>Programmes</b>
+        </label>
+        <div class="mb-3">
+          <div class="input-group mb-3">
+            <select class="form-select" aria-label="Default select example"
+              id="select_pgm" onchange="generer_graphe()">
+              <!-- -là où le contenu de pgmslst.html sera inséré ----------- -->
+            </select>
+            <button type="button" class="btn btn-primary btn-sm" id="okp"
+              onclick="resetPgm()"><i
+                class="material-icons">restart_alt</i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- -affichage de texte d'information + bouton gen PDF--------------- -->
+      <div class="col">
+        <div class="mb-6">
+          <div class="mb-3">
+            <span id="graphHelp" data-bs-toggle="offcanvas"
+              href="#offcanvasInfo"
+              class="badge bg-dark-subtle border border-dark-subtle text-dark-emphasis rounded-pill"><b>?</b></span>
+            <label for="formGroupExampleInput" class="form-label" id="texte">
+              <b>Graphe</b></label>
+          </div>
+        </div>
+        <div class="input-group mb3">
+          <button type="button" class="btn btn-primary btn-sm rounded"
+            id="gen_pdf" onclick="genPDF()">GenPDF</button>
+          <span class="border rounded" id="groupcheck">
+            <label for="formGroupExampleInput" class="form-label"
+              visibility="hidden"></label>
+            <!-- <div class="input-group-text"> -->
+            <input class="form-check-input" type="checkbox" value="" checked=""
+              id="checkbox">
+            <label class="form-check-label" id="checktxt">
+              Mode cheminement &nbsp;
+            </label>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- -marquer un espace entre texte et zone affichage graphe --------- -->
+      <div class="mb-6">
+        <label for="formGroupExampleInput" class="form-label"
+          visibility="hidden"></label>
+      </div>
+    </div>
+    <div class="row">
+      <!-- -zone d'affichage du graphe de dépendances + bouton gen PDF ----- -->
+      <div class="mb-3 text-center">
+        <div
+          class="d-inline-flex p-2 justify-content-center shadow bg-body rounded"
+          id="target_graph">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- -marquer un espace entre texte et zone affichage graphe --------- -->
+      <div class="mb-6">
+        <label for="formGroupExampleInput" class="form-label"
+          visibility="hidden"></label>
+      </div>
+    </div>
+  </div>
+  <footer class="bg-body-tertiary text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2024 Copyright,
+      <a href="mailto:bechir.ktari@ift.ulaval.ca">Béchir Ktari</a> (<a
+        href="https://www.ulaval.ca/etudes/cours/ift-3000-langages-de-programmation">IFT-3000</a>)
+    </div>
+  </footer>
+
+  <!-- -SCRIPTS IMPORTÉS---------------------------------------------------- -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="globals/js/viz/viz.js" data-cover></script>
+  <script src="globals/js/viz/full.render.js" data-cover></script>
+  <script src="globals/js/jspdf/jspdf.min.js" data-cover></script>
+  <script src="globals/js/jspdf/svg2pdf.min.js" data-cover></script>
+  <script src="globals/js/jspdf/svg-pan-zoom.min.js" data-cover></script>
+  <!-- - CODE TP en JS ----------------------------------------------------- -->
+  <script src="resources/js/gcp/tp2js.bc.js"></script>
+  <!-- - MON SCRIPT -------------------------------------------------------- -->
+  <script src="resources/js/script.js" data-cover></script>
+
+</body>
+
+</html>

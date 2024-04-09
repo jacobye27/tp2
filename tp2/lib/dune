@@ -1,0 +1,10 @@
+(library
+ (public_name tp2)
+ (name tp2)
+ (libraries gcpLib)
+ (modules tp2))
+
+(env
+ (dev
+  (flags
+   (:standard -w -8-26-27-32-33))))

@@ -1,0 +1,3 @@
+(test
+ (name testeur)
+ (libraries tp2 unix))

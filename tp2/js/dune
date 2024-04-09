@@ -1,0 +1,12 @@
+(executable
+ (name tp2js)
+ (modules tp2js)
+ (modes js)
+ (preprocess
+  (pps js_of_ocaml-ppx))
+ (libraries gcpLib tp2 gengraph js_of_ocaml))
+
+(env
+ (dev
+  (flags
+   (:standard -w -26-27-32-33))))

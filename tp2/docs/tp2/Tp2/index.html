@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Tp2 (tp2.Tp2)</title><meta charset="utf-8"/><link rel="stylesheet" href="../../odoc.support/odoc.css"/><meta name="generator" content="odoc 2.4.1"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><script src="../../odoc.support/highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script><script>let base_url = '../../';
+let search_urls = ['../db.js','../../sherlodoc.js'];
+</script><script src="../../odoc.support/odoc_search.js" defer="defer"></script></head><body class="odoc"><nav class="odoc-nav"><a href="../index.html">Up</a> – <a href="../index.html">tp2</a> &#x00BB; Tp2</nav><div class="odoc-search"><div class="search-inner"><input class="search-bar" placeholder="🔎 Search..."/><div class="search-snake"></div><div class="search-result"></div></div></div><header class="odoc-preamble"><h1>Module <code><span>Tp2</span></code></h1><p>TP2 Hiver 2024 - Langages de programmation (IFT-3000)</p><ul><li>Gestion de cours et de programmes - Dépendances de cours (suite du Tp1)</li></ul></header><nav class="odoc-toc"><ul><li><a href="#structures-de-données">Structures de données</a></li><li><a href="#interface-des-fonctions-fournies-et-exportées">Interface des fonctions fournies et exportées</a></li><li><a href="#interface-des-fonctions-exportées-à-implanter">Interface des fonctions exportées à implanter</a></li></ul></nav><div class="odoc-content"><h2 id="structures-de-données"><a href="#structures-de-données" class="anchor"></a>Structures de données</h2><div class="odoc-spec"><div class="spec type anchored" id="type-id_cours"><a href="#type-id_cours" class="anchor"></a><code><span><span class="keyword">type</span> id_cours</span><span> = string</span></code></div></div><div class="odoc-spec"><div class="spec type anchored" id="type-element_graphe"><a href="#type-element_graphe" class="anchor"></a><code><span><span class="keyword">and</span> element_graphe</span><span> = </span></code><ol><li id="type-element_graphe.Noeud" class="def variant constructor anchored"><a href="#type-element_graphe.Noeud" class="anchor"></a><code><span>| </span><span><span class="constructor">Noeud</span> <span class="keyword">of</span> <a href="#type-id_cours">id_cours</a> * <span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a> list</span></span></code></li><li id="type-element_graphe.Arete" class="def variant constructor anchored"><a href="#type-element_graphe.Arete" class="anchor"></a><code><span>| </span><span><span class="constructor">Arete</span> <span class="keyword">of</span> <a href="#type-id_cours">id_cours</a> * <a href="#type-id_cours">id_cours</a></span></code></li></ol></div></div><h2 id="interface-des-fonctions-fournies-et-exportées"><a href="#interface-des-fonctions-fournies-et-exportées" class="anchor"></a>Interface des fonctions fournies et exportées</h2><div class="odoc-spec"><div class="spec value anchored" id="val-graphe_pre_cours"><a href="#val-graphe_pre_cours" class="anchor"></a><code><span><span class="keyword">val</span> graphe_pre_cours : 
+  <span><span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-cours">GcpLib.Gcp.cours</a> list</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><span>(<span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a> list</span> * <a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a>)</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><a href="#type-element_graphe">element_graphe</a> list</span></span></code></div><div class="spec-doc"><p><code>graphe_pre_cours bcours (lncp, nc)</code> Retourne, sous forme d'élments de graphe, les chaines de cours préalables au cours <code>nc</code>; ces chaines ne comprennent que les cours présents dans la liste <code>lncp</code>.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-graphe_post_cours"><a href="#val-graphe_post_cours" class="anchor"></a><code><span><span class="keyword">val</span> graphe_post_cours : 
+  <span><span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-cours">GcpLib.Gcp.cours</a> list</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><span>(<span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a> list</span> * <a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a>)</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><a href="#type-element_graphe">element_graphe</a> list</span></span></code></div><div class="spec-doc"><p><code>graphe_post_cours bcours (lncp, nc)</code> Retourne, sous forme d'élments de graphe, les chaines de cours qui dépendent du cours <code>nc</code>; ces chaines ne comprennent que les cours présents dans la liste <code>lncp</code>.</p></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-graphe_cours"><a href="#val-graphe_cours" class="anchor"></a><code><span><span class="keyword">val</span> graphe_cours : 
+  <span><span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-cours">GcpLib.Gcp.cours</a> list</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><span>(<span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a> list</span> * <a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a>)</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><a href="#type-element_graphe">element_graphe</a> list</span></span></code></div><div class="spec-doc"><p><code>graphe_cours bcours (lncp, nc)</code> Retourne, sous forme d'élments de graphe, les chaines de cours qui dépendent du cours <code>nc</code> et dont il dépend; ces chaines ne comprennent que les cours présents dans la liste <code>lncp</code>.</p></div></div><h2 id="interface-des-fonctions-exportées-à-implanter"><a href="#interface-des-fonctions-exportées-à-implanter" class="anchor"></a>Interface des fonctions exportées à implanter</h2><div class="odoc-spec"><div class="spec value anchored" id="val-ret_lnc_pre"><a href="#val-ret_lnc_pre" class="anchor"></a><code><span><span class="keyword">val</span> ret_lnc_pre : 
+  <span><span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-cours">GcpLib.Gcp.cours</a> list</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><span>(<span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a> list</span> * <a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a>)</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a> list</span></span></code></div><div class="spec-doc"><p><code>ret_lnc_pre lc (lncp, nc)</code> Retourne, à partir de la banque de cours <code>lc</code>, la liste des cours présents dans les préalables immédiats du cours <code>nc</code>, en ne retenant que ceux qui font partie de <code>lncp</code>.</p><p><b>Soulève exception</b> <em>Failure</em> si le cours <code>nc</code> n'est pas défini dans <code>lc</code> (l'exception pourrait avoir été soulevée par une autre fonction appelée dans le corps de <code>ret_lnc_pre</code>).</p><p>Exemples:</p><pre class="language-ocaml"><code># ret_lnc_pre bcours ([], &quot;IFT-3000&quot;);;
+- : num_cours list = []</code></pre><pre class="language-ocaml"><code># ret_lnc_pre bcours (cours_pgm c_ift, &quot;IFT-3000&quot;);;
+- : num_cours list =
+[&quot;GIF-1003&quot;; &quot;IFT-1006&quot;; &quot;IFT-2008&quot;; &quot;GLO-2100&quot;]</code></pre><pre class="language-ocaml"><code># ret_lnc_pre bcours (cours_pgm b_glo, &quot;IFT-3000&quot;);;
+- : num_cours list =
+[&quot;GIF-1003&quot;; &quot;GLO-2100&quot;]</code></pre><pre class="language-ocaml"><code># ret_lnc_pre bcours (cours_pgm mp_jv, &quot;GLO-4002&quot;);;
+- : num_cours list =
+[]</code></pre><pre class="language-ocaml"><code># ret_lnc_pre bcours (cours_pgm c_ift, &quot;XYZ-3000&quot;);;
+Exception: Failure &quot;Cours &lt;XYZ-3000&gt; inexistant!&quot;.</code></pre></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-ret_lnc_post"><a href="#val-ret_lnc_post" class="anchor"></a><code><span><span class="keyword">val</span> ret_lnc_post : 
+  <span><span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-cours">GcpLib.Gcp.cours</a> list</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><span>(<span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a> list</span> * <a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a>)</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a> list</span></span></code></div><div class="spec-doc"><p><code>ret_lnc_post lc (lncp, nc)</code> Retourne, à partir de la banque de cours <code>lc</code>, la liste des cours qui admettent dans leurs préalables immédiats le cours <code>nc</code>, en ne retenant que ceux qui font partie de <code>lncp</code>.</p><p><b>Soulève exception</b> <em>Failure</em> si le cours <code>nc</code> n'est pas défini dans <code>lc</code> (l'exception pourrait avoir été soulevée par une autre fonction appelée dans le corps de <code>ret_lnc_post</code>).</p><p>Exemples:</p><pre class="language-ocaml"><code># ret_lnc_post bcours ([], &quot;IFT-3000&quot;);;
+- : num_cours list = []</code></pre><pre class="language-ocaml"><code># ret_lnc_post bcours (cours_pgm b_ift, &quot;IFT-3000&quot;);;
+- : num_cours list = [&quot;GLO-4010&quot;]</code></pre><pre class="language-ocaml"><code># ret_lnc_post bcours (cours_pgm c_ift, &quot;IFT-3000&quot;);;
+- : num_cours list = []</code></pre><pre class="language-ocaml"><code># ret_lnc_post bcours (cours_pgm c_ift, &quot;IFT-1004&quot;);;
+- : num_cours list = 
+[&quot;GIF-1001&quot;; &quot;GIF-1003&quot;; &quot;IFT-1006&quot;; &quot;IFT-2004&quot;; &quot;GLO-2005&quot;; &quot;SIO-2102&quot;; 
+&quot;SIO-2104&quot;]</code></pre><pre class="language-ocaml"><code># ret_lnc_post bcours (cours_pgm b_ift, &quot;IFT-1004&quot;);;
+- : num_cours list = 
+[&quot;BIF-1001&quot;; &quot;GIF-1001&quot;; &quot;GIF-1003&quot;; &quot;IFT-1006&quot;; &quot;IFT-2003&quot;; &quot;IFT-2004&quot;;
+ &quot;GLO-2005&quot;; &quot;SIO-2100&quot;; &quot;SIO-2102&quot;; &quot;SIO-2104&quot;; &quot;SIO-2105&quot;; &quot;SIO-2107&quot;;
+ &quot;STT-2200&quot;; &quot;GLO-4001&quot;; &quot;BIF-4007&quot;; &quot;IFT-4030&quot;; &quot;IFT-4100&quot;; &quot;GIF-4105&quot;]</code></pre><pre class="language-ocaml"><code># ret_lnc_post bcours (cours_pgm c_ift, &quot;XYZ-3000&quot;);;
+Exception: Failure &quot;Cours &lt;XYZ-3000&gt; inexistant!&quot;.</code></pre></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-graphe_pre_post_cours"><a href="#val-graphe_pre_post_cours" class="anchor"></a><code><span><span class="keyword">val</span> graphe_pre_post_cours : 
+  <span><span>(<span><span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-cours">GcpLib.Gcp.cours</a> list</span> <span class="arrow">&#45;&gt;</span></span>
+    <span><span>(<span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a> list</span> * <a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a>)</span> <span class="arrow">&#45;&gt;</span></span>
+    <span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a> list</span>)</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><span>(<span><span>(<a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a> * <a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a>)</span> <span class="arrow">&#45;&gt;</span></span> <a href="#type-element_graphe">element_graphe</a>)</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-cours">GcpLib.Gcp.cours</a> list</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><span>(<span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a> list</span> * <a href="../../gcpLib/GcpLib/Gcp/index.html#type-num_cours">GcpLib.Gcp.num_cours</a>)</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><a href="#type-element_graphe">element_graphe</a> list</span></span></code></div><div class="spec-doc"><p><code>graphe_pre_post_cours ret_lnc dir_arete lc (lnc, nc)</code> Retourne, à partir de la banque de cours <code>lc</code>, une liste d'éléments de graphe (noeuds et arêtes) correspondant aux pré ou postrequis du cours <code>nc</code>. Les cours qui font partie des éléments du graphe résultant sont restreints à ceux faisant partie des cours <code>lnc</code>. L'argument <code>ret_lnc</code>, une fonction, permet de retourner la liste des cours pré ou postrequis à un cours donné (en commençant par <code>nc</code>). L'argument <code>dir_arete</code>, une fonction, permet de préciser la direction de l'arête (selon qu'on s'intéresse aux pré ou postrequis).</p><p>Deux exemples d'utilisation de cette fonction sont fournis à travers les fonctions <code>graphe_pre_cours</code> et <code>graphe_post_cours</code> qui permettent de retourner la liste des éléments de graphes (noeuds et arêtes) correspondant resp. aux chaines de prérequis d'un cours <code>nc</code>, et aux chaines de cours postrequis de ce cours. Il serait donc judicieux de tester <code>graphe_pre_post_cours</code> via ces 2 fonctions (c'est ce que fait le testeur).</p><p><b>Soulève exception</b> <em>Failure</em> si le cours <code>nc</code> n'est pas défini dans <code>lc</code> (l'exception pourrait avoir été soulevée par une autre fonction appelée dans le corps de <code>graphe_pre_post_cours</code>).</p><p>Exemples:</p><pre class="language-ocaml"><code># graphe_pre_cours bcours (cours_pgm b_ift, &quot;IFT-3000&quot;);;
+- : element_graphe list =
+  [Noeud (&quot;GIF1003&quot;, [&quot;GIF-1003&quot;; &quot;IFT-1006&quot;]);
+   Noeud (&quot;GLO2100&quot;, [&quot;GLO-2100&quot;; &quot;IFT-2008&quot;]); Arete (&quot;GIF1003&quot;, &quot;IFT3000&quot;);
+   Arete (&quot;GLO2100&quot;, &quot;IFT3000&quot;); Noeud (&quot;IFT1004&quot;, [&quot;IFT-1004&quot;]);
+   Arete (&quot;IFT1004&quot;, &quot;GIF1003&quot;); Arete (&quot;GIF1003&quot;, &quot;GLO2100&quot;)]</code></pre><pre class="language-ocaml"><code># graphe_pre_cours bcours (cours_pgm b_ift, &quot;IFT-2003&quot;);;
+- : element_graphe list =
+  [Noeud (&quot;IFT1000&quot;, [&quot;IFT-1000&quot;]); Noeud (&quot;MAT1919&quot;, [&quot;MAT-1919&quot;]);
+   Noeud (&quot;IFT1004&quot;, [&quot;IFT-1004&quot;]); Arete (&quot;IFT1000&quot;, &quot;IFT2003&quot;);
+   Arete (&quot;MAT1919&quot;, &quot;IFT2003&quot;); Arete (&quot;IFT1004&quot;, &quot;IFT2003&quot;);
+   Arete (&quot;MAT1919&quot;, &quot;IFT1000&quot;)]</code></pre><pre class="language-ocaml"><code># graphe_pre_cours bcours (cours_pgm b_ift, &quot;IFT-2103&quot;);;
+- : element_graphe list =
+  [Noeud (&quot;GIF1003&quot;, [&quot;GIF-1003&quot;; &quot;IFT-1006&quot;]);
+   Noeud (&quot;IFT3100&quot;, [&quot;IFT-3100&quot;]); Arete (&quot;GIF1003&quot;, &quot;IFT2103&quot;);
+   Arete (&quot;IFT3100&quot;, &quot;IFT2103&quot;); Noeud (&quot;IFT1004&quot;, [&quot;IFT-1004&quot;]);
+   Arete (&quot;IFT1004&quot;, &quot;GIF1003&quot;); Arete (&quot;GIF1003&quot;, &quot;IFT3100&quot;)]</code></pre><pre class="language-ocaml"><code># graphe_pre_cours bcours (cours_pgm mp_base, &quot;IFT-1006&quot;);;
+- : element_graphe list =
+  [Noeud (&quot;IFT1004&quot;, [&quot;IFT-1004&quot;]); Arete (&quot;IFT1004&quot;, &quot;IFT1006&quot;)]</code></pre><pre class="language-ocaml"><code># graphe_pre_cours bcours (cours_pgm mp_base, &quot;GLO-2100&quot;);;
+- : element_graphe list =
+  [Noeud (&quot;GIF1003&quot;, [&quot;GIF-1003&quot;; &quot;IFT-1006&quot;]); Arete (&quot;GIF1003&quot;, &quot;GLO2100&quot;);
+   Noeud (&quot;IFT1004&quot;, [&quot;IFT-1004&quot;]); Arete (&quot;IFT1004&quot;, &quot;GIF1003&quot;)]</code></pre><pre class="language-ocaml"><code># graphe_pre_cours bcours (bcours |&gt; List.map fst, &quot;GLO-2100&quot;);;
+- : element_graphe list =
+  [Noeud (&quot;GIF1003&quot;, [&quot;GIF-1003&quot;; &quot;IFT-1006&quot;]); Arete (&quot;GIF1003&quot;, &quot;GLO2100&quot;);
+   Noeud (&quot;GLO1901&quot;, [&quot;GLO-1901&quot;; &quot;IFT-1004&quot;]); Arete (&quot;GLO1901&quot;, &quot;GIF1003&quot;)]</code></pre><pre class="language-ocaml"><code># graphe_pre_cours bcours (cours_pgm c_ift, &quot;XYZ-3000&quot;);;
+Exception: Failure &quot;Cours &lt;XYZ-3000&gt; inexistant!&quot;.</code></pre><pre class="language-ocaml"><code># graphe_post_cours bcours (cours_pgm b_ift, &quot;IFT-3000&quot;);;
+- : element_graphe list =
+  [Noeud (&quot;GLO4010&quot;, [&quot;GLO-4010&quot;]); Arete (&quot;IFT3000&quot;, &quot;GLO4010&quot;)]</code></pre><pre class="language-ocaml"><code># graphe_post_cours bcours (cours_pgm b_ift, &quot;IFT-2003&quot;);;
+- : element_graphe list =
+  []</code></pre><pre class="language-ocaml"><code># graphe_post_cours bcours (cours_pgm b_ift, &quot;IFT-2103&quot;);;
+- : element_graphe list =
+  [Noeud (&quot;IFT3113&quot;, [&quot;IFT-3113&quot;]); Arete (&quot;IFT2103&quot;, &quot;IFT3113&quot;)]</code></pre><pre class="language-ocaml"><code># graphe_post_cours bcours (cours_pgm mp_base, &quot;IFT-1006&quot;);;
+- : element_graphe list =
+  [Noeud (&quot;GLO2004&quot;, [&quot;GLO-2004&quot;; &quot;IFT-2007&quot;]);
+   Noeud (&quot;GLO2100&quot;, [&quot;GLO-2100&quot;; &quot;IFT-2008&quot;]);
+   Noeud (&quot;IFT2103&quot;, [&quot;IFT-2103&quot;]); Noeud (&quot;IFT3000&quot;, [&quot;IFT-3000&quot;]);
+   Noeud (&quot;IFT3100&quot;, [&quot;IFT-3100&quot;]); Arete (&quot;IFT1006&quot;, &quot;GLO2004&quot;);
+   Arete (&quot;IFT1006&quot;, &quot;GLO2100&quot;); Arete (&quot;IFT1006&quot;, &quot;IFT2103&quot;);
+   Arete (&quot;IFT1006&quot;, &quot;IFT3000&quot;); Arete (&quot;IFT1006&quot;, &quot;IFT3100&quot;);
+   Arete (&quot;GLO2100&quot;, &quot;IFT3000&quot;); Noeud (&quot;IFT2001&quot;, [&quot;IFT-2001&quot;]);
+   Arete (&quot;GLO2100&quot;, &quot;IFT2001&quot;); Arete (&quot;IFT3100&quot;, &quot;IFT2103&quot;)]</code></pre><pre class="language-ocaml"><code># graphe_post_cours bcours (cours_pgm mp_base, &quot;GLO-2100&quot;);;
+- : element_graphe list =
+  [Noeud (&quot;IFT2001&quot;, [&quot;IFT-2001&quot;]); Noeud (&quot;IFT3000&quot;, [&quot;IFT-3000&quot;]);
+   Arete (&quot;GLO2100&quot;, &quot;IFT2001&quot;); Arete (&quot;GLO2100&quot;, &quot;IFT3000&quot;)]</code></pre><pre class="language-ocaml"><code># graphe_post_cours bcours (bcours |&gt; List.map fst, &quot;GLO-2100&quot;);;
+- : element_graphe list =
+   [Noeud (&quot;GLO2001&quot;, [&quot;GLO-2001&quot;; &quot;IFT-2001&quot;]);
+    Noeud (&quot;IFT3000&quot;, [&quot;IFT-3000&quot;]); Noeud (&quot;IFT3001&quot;, [&quot;IFT-3001&quot;]);
+    Noeud (&quot;GLO3100&quot;, [&quot;GLO-3100&quot;]); Noeud (&quot;GLO4009&quot;, [&quot;GLO-4009&quot;]);
+    Noeud (&quot;IFT4021&quot;, [&quot;IFT-4021&quot;]); Noeud (&quot;IFT4022&quot;, [&quot;IFT-4022&quot;]);
+    Noeud (&quot;GLO4027&quot;, [&quot;GLO-4027&quot;]); Noeud (&quot;IFT4029&quot;, [&quot;IFT-4029&quot;]);
+    Noeud (&quot;IFT4102&quot;, [&quot;IFT-4102&quot;]); Noeud (&quot;GIF4104&quot;, [&quot;GIF-4104&quot;]);
+    Noeud (&quot;IFT4201&quot;, [&quot;IFT-4201&quot;]); Arete (&quot;GLO2100&quot;, &quot;GLO2001&quot;);
+    Arete (&quot;GLO2100&quot;, &quot;IFT3000&quot;); Arete (&quot;GLO2100&quot;, &quot;IFT3001&quot;);
+    Arete (&quot;GLO2100&quot;, &quot;GLO3100&quot;); Arete (&quot;GLO2100&quot;, &quot;GLO4009&quot;);
+    Arete (&quot;GLO2100&quot;, &quot;IFT4021&quot;); Arete (&quot;GLO2100&quot;, &quot;IFT4022&quot;);
+    Arete (&quot;GLO2100&quot;, &quot;GLO4027&quot;); Arete (&quot;GLO2100&quot;, &quot;IFT4029&quot;);
+    Arete (&quot;GLO2100&quot;, &quot;IFT4102&quot;); Arete (&quot;GLO2100&quot;, &quot;GIF4104&quot;);
+    Arete (&quot;GLO2100&quot;, &quot;IFT4201&quot;); Noeud (&quot;GIF3000&quot;, [&quot;GIF-3000&quot;]);
+    Noeud (&quot;GIF3004&quot;, [&quot;GIF-3004&quot;]); Noeud (&quot;GLO4008&quot;, [&quot;GLO-4008&quot;]);
+    Arete (&quot;GLO2001&quot;, &quot;GIF3000&quot;); Arete (&quot;GLO2001&quot;, &quot;GIF3004&quot;);
+    Arete (&quot;GLO2001&quot;, &quot;GLO4008&quot;); Noeud (&quot;GLO4010&quot;, [&quot;GLO-4010&quot;]);
+    Arete (&quot;IFT3000&quot;, &quot;GLO4010&quot;); Noeud (&quot;IFT4001&quot;, [&quot;IFT-4001&quot;]);
+    Noeud (&quot;IFT4003&quot;, [&quot;IFT-4003&quot;]); Arete (&quot;IFT3001&quot;, &quot;IFT4001&quot;);
+    Arete (&quot;IFT3001&quot;, &quot;IFT4003&quot;); Arete (&quot;IFT4102&quot;, &quot;IFT4201&quot;);
+    Noeud (&quot;GLO4030&quot;, [&quot;GLO-4030&quot;]); Arete (&quot;IFT4102&quot;, &quot;GLO4030&quot;)]</code></pre><pre class="language-ocaml"><code># graphe_post_cours bcours (cours_pgm c_ift, &quot;XYZ-3000&quot;);;
+Exception: Failure &quot;Cours &lt;XYZ-3000&gt; inexistant!&quot;.</code></pre></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-graphe_pgm"><a href="#val-graphe_pgm" class="anchor"></a><code><span><span class="keyword">val</span> graphe_pgm : 
+  <span><span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-cours">GcpLib.Gcp.cours</a> list</span> <span class="arrow">&#45;&gt;</span></span>
+  <span><a href="../../gcpLib/GcpLib/Gcp/index.html#type-programme">GcpLib.Gcp.programme</a> <span class="arrow">&#45;&gt;</span></span>
+  <span><a href="#type-element_graphe">element_graphe</a> list</span></span></code></div><div class="spec-doc"><p><code>graphe_pgm lc pgm</code> Retourne, à partir de la banque de cours <code>lc</code>, la liste d'éléments de graphe (noeuds et arêtes) correspondant au graphe de dépendances entre cours du programme <code>pgm</code>.</p><p>Exemples:</p><pre class="language-ocaml"><code># graphe_pgm bcours mp_web;;
+- : element_graphe list =
+  [Noeud (&quot;IFT1004&quot;, [&quot;IFT-1004&quot;]);
+   Noeud (&quot;GIF1003&quot;, [&quot;GIF-1003&quot;; &quot;IFT-1006&quot;]);
+   Noeud (&quot;GLO2005&quot;, [&quot;GLO-2005&quot;; &quot;IFT-2004&quot;]); Arete (&quot;IFT1004&quot;, &quot;GIF1003&quot;);
+   Arete (&quot;IFT1004&quot;, &quot;GLO2005&quot;); Noeud (&quot;GLO2004&quot;, [&quot;GLO-2004&quot;; &quot;IFT-2007&quot;]);
+   Arete (&quot;GIF1003&quot;, &quot;GLO2004&quot;); Noeud (&quot;GLO3102&quot;, [&quot;GLO-3102&quot;]);
+   Arete (&quot;GLO2004&quot;, &quot;GLO3102&quot;); Noeud (&quot;GLO3112&quot;, [&quot;GLO-3112&quot;]);
+   Arete (&quot;GLO3102&quot;, &quot;GLO3112&quot;); Arete (&quot;GLO2005&quot;, &quot;GLO3112&quot;)]</code></pre><pre class="language-ocaml"><code># graphe_pgm bcours c_ift;;
+- : element_graphe list =
+  [Noeud (&quot;IFT1004&quot;, [&quot;IFT-1004&quot;]); Noeud (&quot;GLO3101&quot;, [&quot;GLO-3101&quot;]);
+   Noeud (&quot;GLO4000&quot;, [&quot;GLO-4000&quot;]); Noeud (&quot;IFT1003&quot;, [&quot;IFT-1003&quot;]);
+   Noeud (&quot;IFT1700&quot;, [&quot;IFT-1700&quot;]); Noeud (&quot;GIF1001&quot;, [&quot;GIF-1001&quot;]);
+   Noeud (&quot;GIF1003&quot;, [&quot;GIF-1003&quot;; &quot;IFT-1006&quot;]);
+   Noeud (&quot;GLO2005&quot;, [&quot;GLO-2005&quot;; &quot;IFT-2004&quot;]);
+   Noeud (&quot;SIO2102&quot;, [&quot;SIO-2102&quot;]); Noeud (&quot;SIO2104&quot;, [&quot;SIO-2104&quot;]);
+   Arete (&quot;IFT1004&quot;, &quot;GIF1001&quot;); Arete (&quot;IFT1004&quot;, &quot;GIF1003&quot;);
+   Arete (&quot;IFT1004&quot;, &quot;GLO2005&quot;); Arete (&quot;IFT1004&quot;, &quot;SIO2102&quot;);
+   Arete (&quot;IFT1004&quot;, &quot;SIO2104&quot;); Noeud (&quot;GLO2000&quot;, [&quot;GLO-2000&quot;; &quot;IFT-2006&quot;]);
+   Noeud (&quot;GLO2001&quot;, [&quot;GLO-2001&quot;; &quot;IFT-2001&quot;]);
+   Noeud (&quot;IFT3002&quot;, [&quot;IFT-3002&quot;]); Arete (&quot;GIF1001&quot;, &quot;GLO2000&quot;);
+   Arete (&quot;GIF1001&quot;, &quot;GLO2001&quot;); Arete (&quot;GIF1001&quot;, &quot;IFT3002&quot;);
+   Noeud (&quot;IFT2101&quot;, [&quot;IFT-2101&quot;]); Noeud (&quot;IFT3201&quot;, [&quot;IFT-3201&quot;]);
+   Noeud (&quot;GLO4008&quot;, [&quot;GLO-4008&quot;]); Noeud (&quot;IFT4029&quot;, [&quot;IFT-4029&quot;]);
+   Arete (&quot;GLO2000&quot;, &quot;IFT2101&quot;); Arete (&quot;GLO2000&quot;, &quot;IFT3201&quot;);
+   Arete (&quot;GLO2000&quot;, &quot;GLO4008&quot;); Arete (&quot;GLO2000&quot;, &quot;IFT4029&quot;);
+   Arete (&quot;GLO2001&quot;, &quot;GLO4008&quot;); Noeud (&quot;GLO2004&quot;, [&quot;GLO-2004&quot;; &quot;IFT-2007&quot;]);
+   Noeud (&quot;GLO2100&quot;, [&quot;GLO-2100&quot;; &quot;IFT-2008&quot;]);
+   Noeud (&quot;IFT2103&quot;, [&quot;IFT-2103&quot;]); Noeud (&quot;IFT3000&quot;, [&quot;IFT-3000&quot;]);
+   Noeud (&quot;IFT3100&quot;, [&quot;IFT-3100&quot;]); Arete (&quot;GIF1003&quot;, &quot;GLO2004&quot;);
+   Arete (&quot;GIF1003&quot;, &quot;GLO2100&quot;); Arete (&quot;GIF1003&quot;, &quot;IFT2103&quot;);
+   Arete (&quot;GIF1003&quot;, &quot;IFT3000&quot;); Arete (&quot;GIF1003&quot;, &quot;IFT3100&quot;);
+   Noeud (&quot;GLO2003&quot;, [&quot;GLO-2003&quot;]); Noeud (&quot;GLO3102&quot;, [&quot;GLO-3102&quot;]);
+   Noeud (&quot;GLO4002&quot;, [&quot;GLO-4002&quot;]); Arete (&quot;GLO2004&quot;, &quot;GLO2003&quot;);
+   Arete (&quot;GLO2004&quot;, &quot;GLO3102&quot;); Arete (&quot;GLO2004&quot;, &quot;GLO4002&quot;);
+   Arete (&quot;GLO2003&quot;, &quot;GLO4002&quot;); Noeud (&quot;IFT2102&quot;, [&quot;IFT-2102&quot;]);
+   Arete (&quot;GLO2003&quot;, &quot;IFT2102&quot;); Noeud (&quot;GLO3112&quot;, [&quot;GLO-3112&quot;]);
+   Noeud (&quot;GLO3202&quot;, [&quot;GLO-3202&quot;]); Arete (&quot;GLO3102&quot;, &quot;GLO3112&quot;);
+   Arete (&quot;GLO3102&quot;, &quot;GLO3202&quot;); Arete (&quot;GLO4002&quot;, &quot;GLO4008&quot;);
+   Noeud (&quot;GLO4003&quot;, [&quot;GLO-4003&quot;]); Arete (&quot;GLO4002&quot;, &quot;GLO4003&quot;);
+   Arete (&quot;GLO2100&quot;, &quot;GLO2001&quot;); Arete (&quot;GLO2100&quot;, &quot;IFT3000&quot;);
+   Arete (&quot;GLO2100&quot;, &quot;IFT4029&quot;); Noeud (&quot;GLO4009&quot;, [&quot;GLO-4009&quot;]);
+   Noeud (&quot;GLO4027&quot;, [&quot;GLO-4027&quot;]); Noeud (&quot;GIF4104&quot;, [&quot;GIF-4104&quot;]);
+   Arete (&quot;GLO2100&quot;, &quot;GLO4009&quot;); Arete (&quot;GLO2100&quot;, &quot;GLO4027&quot;);
+   Arete (&quot;GLO2100&quot;, &quot;GIF4104&quot;); Noeud (&quot;IFT3113&quot;, [&quot;IFT-3113&quot;]);
+   Arete (&quot;IFT2103&quot;, &quot;IFT3113&quot;); Arete (&quot;IFT3100&quot;, &quot;IFT2103&quot;);
+   Arete (&quot;GLO2005&quot;, &quot;GLO3112&quot;); Arete (&quot;GLO2005&quot;, &quot;GLO4027&quot;);
+   Noeud (&quot;GLO4035&quot;, [&quot;GLO-4035&quot;]); Arete (&quot;GLO2005&quot;, &quot;GLO4035&quot;);
+   Arete (&quot;IFT1003&quot;, &quot;IFT2102&quot;)]</code></pre></div></div><div class="odoc-spec"><div class="spec value anchored" id="val-ordonner_id_cours_par_session"><a href="#val-ordonner_id_cours_par_session" class="anchor"></a><code><span><span class="keyword">val</span> ordonner_id_cours_par_session : <span><span><a href="#type-element_graphe">element_graphe</a> list</span> <span class="arrow">&#45;&gt;</span></span> <span><span>string list</span> list</span></span></code></div><div class="spec-doc"><p><code>ordonner_id_cours_par_session graphe</code> Retourne la liste des numéros d'identification, dans les arêtes du graphe, ordonnés par ordre de dépendances.</p><p>Exemples:</p><pre class="language-ocaml"><code># ordonner_id_cours_par_session (graphe_pgm bcours c_ift);;
+- : string list list =
+  [[&quot;IFT1700&quot;; &quot;IFT1003&quot;; &quot;GLO4000&quot;; &quot;GLO3101&quot;; &quot;IFT1004&quot;];
+   [&quot;SIO2104&quot;; &quot;SIO2102&quot;; &quot;GLO2005&quot;; &quot;GIF1003&quot;; &quot;GIF1001&quot;];
+   [&quot;GLO4035&quot;; &quot;IFT3100&quot;; &quot;GLO2100&quot;; &quot;GLO2004&quot;; &quot;IFT3002&quot;; &quot;GLO2000&quot;];
+   [&quot;GIF4104&quot;; &quot;GLO4027&quot;; &quot;GLO4009&quot;; &quot;GLO3102&quot;; &quot;GLO2003&quot;; &quot;IFT3000&quot;;
+    &quot;IFT2103&quot;; &quot;IFT4029&quot;; &quot;IFT3201&quot;; &quot;IFT2101&quot;; &quot;GLO2001&quot;];
+   [&quot;IFT3113&quot;; &quot;GLO3202&quot;; &quot;GLO3112&quot;; &quot;IFT2102&quot;; &quot;GLO4002&quot;];
+   [&quot;GLO4003&quot;; &quot;GLO4008&quot;]]</code></pre><pre class="language-ocaml"><code># ordonner_id_cours_par_session (graphe_pgm bcours mp_base);;
+- : string list list =
+  [[&quot;IFT1700&quot;; &quot;IFT1003&quot;; &quot;IFT1004&quot;]; [&quot;IFT2004&quot;; &quot;GIF1003&quot;; &quot;GIF1001&quot;];
+   [&quot;IFT3100&quot;; &quot;GLO2100&quot;; &quot;GLO2004&quot;; &quot;IFT3002&quot;; &quot;IFT2006&quot;];
+   [&quot;IFT3000&quot;; &quot;IFT2103&quot;; &quot;IFT2001&quot;]]</code></pre></div></div></div></body></html>
